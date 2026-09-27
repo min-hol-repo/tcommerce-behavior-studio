@@ -4,15 +4,17 @@
 
 A synthetic-data demo that captures TV remote-control actions and channel behavior in MongoDB Atlas, then presents live analytics and session journeys.
 
-English is the default application page at `/` and `/en`. The `KO` link navigates to the dedicated Korean page at `/ko`.
-
 > This repository is a technology demonstration. It is not affiliated with a broadcaster or shopping channel, and it does not contain real customer, payment, or viewing data.
 
 ## Screenshots
 
-| Broadcast Simulator | Live Analytics |
-|---|---|
-| ![English broadcast simulator](screenshots/simulator-en.png) | ![English live analytics](screenshots/dashboard-en.png) |
+### Broadcast Simulator
+
+![English broadcast simulator](screenshots/simulator-en.png)
+
+### Live Analytics
+
+![English live analytics](screenshots/dashboard-en.png)
 
 ## Overview
 

@@ -10,9 +10,13 @@ TV 리모컨 조작과 채널 행동을 MongoDB Atlas에 저장하고, 실시간
 
 ## 화면
 
-| 방송 시뮬레이터 | 실시간 분석 |
-|---|---|
-| ![한국어 방송 시뮬레이터](screenshots/simulator-ko.png) | ![한국어 실시간 분석](screenshots/dashboard-ko.png) |
+### 방송 시뮬레이터
+
+![한국어 방송 시뮬레이터](screenshots/simulator-ko.png)
+
+### 실시간 분석
+
+![한국어 실시간 분석](screenshots/dashboard-ko.png)
 
 ## 개요
 
