@@ -125,12 +125,16 @@ export function interpolate(template: string, values: Record<string, string | nu
   return template.replace(/\{(\w+)\}/g, (_, key: string) => String(values[key] ?? `{${key}}`));
 }
 
-export function initialLanguage(): Language {
-  const query = new URLSearchParams(window.location.search).get("lang");
+export function resolveLanguage(pathname: string, search = ""): Language {
+  const route = pathname.match(/\/(ko|en)\/?$/)?.[1];
+  if (route === "ko" || route === "en") return route;
+  const query = new URLSearchParams(search).get("lang");
   if (query === "ko" || query === "en") return query;
-  const stored = window.localStorage.getItem("tcommerce-language");
-  if (stored === "ko" || stored === "en") return stored;
   return "en";
+}
+
+export function initialLanguage(): Language {
+  return resolveLanguage(window.location.pathname, window.location.search);
 }
 
 export function scenarioLabel(language: Language, scenario: Scenario): string {

@@ -69,12 +69,11 @@ function App() {
       ? interpolate(copy.connection.connected, { database: connection.database ?? "Atlas" })
       : copy.connection.unavailable;
 
-  function changeLanguage(next: Language): void {
-    setLanguage(next);
-    window.localStorage.setItem("tcommerce-language", next);
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", next);
-    window.history.replaceState({}, "", url);
+  function languageHref(next: Language): string {
+    const params = new URLSearchParams(window.location.search);
+    params.delete("lang");
+    const query = params.toString();
+    return `${import.meta.env.BASE_URL}${next}${query ? `?${query}` : ""}`;
   }
 
   function changeTab(next: Tab): void {
@@ -363,8 +362,8 @@ function App() {
         </nav>
         <div className="topbar-actions">
           <div className="language-switch" role="group" aria-label="Language / 언어">
-            <button className={language === "ko" ? "active" : ""} onClick={() => changeLanguage("ko")} aria-pressed={language === "ko"}>KO</button>
-            <button className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")} aria-pressed={language === "en"}>EN</button>
+            <a className={language === "ko" ? "active" : ""} href={languageHref("ko")} aria-current={language === "ko" ? "page" : undefined}>KO</a>
+            <a className={language === "en" ? "active" : ""} href={languageHref("en")} aria-current={language === "en" ? "page" : undefined}>EN</a>
           </div>
           <div className={`connection ${connection.status}`}><span />{connectionText}</div>
         </div>

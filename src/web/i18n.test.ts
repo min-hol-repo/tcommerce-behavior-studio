@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eventLabel, interpolate, translations } from "./i18n.ts";
+import { eventLabel, interpolate, resolveLanguage, translations } from "./i18n.ts";
 
 function keys(value: unknown, prefix = ""): string[] {
   if (typeof value !== "object" || value === null || Array.isArray(value)) return [prefix];
@@ -19,5 +19,13 @@ describe("translations", () => {
     const event = { eventType: "remote_key" as const, remoteKey: "OK" as const };
     expect(eventLabel("ko", event)).toBe("리모컨 OK");
     expect(eventLabel("en", event)).toBe("Remote OK");
+  });
+
+  it("resolves dedicated language pages with English as the default", () => {
+    expect(resolveLanguage("/en")).toBe("en");
+    expect(resolveLanguage("/ko")).toBe("ko");
+    expect(resolveLanguage("/repo/ko/")).toBe("ko");
+    expect(resolveLanguage("/")).toBe("en");
+    expect(resolveLanguage("/", "?lang=ko")).toBe("ko");
   });
 });
