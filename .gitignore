@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env*
+!.env.example
+coverage/
+.DS_Store
+*.log
+
+# Customer-specific source material and generated internal deliverables.
+docs/
